@@ -1,23 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Music Player</title>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/your_kit_id.js" crossorigin="anonymous"></script>
+  <!-- If you don't have a kit, you can use the free CDN: -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ 
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="player">
-    <h2 id="title">Song Title</h2>
-    <audio id="audio" src="songs/song1.mp3"></audio>
+  <div class="app">
+    <header class="topbar">
+      <h1 class="brand">Music Player</h1>
 
-    <div class="controls">
-      <button id="prev">⏮</button>
-      <button id="play">▶️</button>
-      <button id="next">⏭</button>
-    </div>
+      <div class="top-actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
 
-    <input type="range" id="progress" value="0" />
+    <main class="player-card">
+      <div class="left">
+        <div class="art-wrap">
+          <img id="cover" src="assets/placeholder.jpg" alt="Album art" />
+        </div>
+
+        <div class="meta">
+          <h2 id="title">Song Title</h2>
+          <p id="artist">Artist Name</p>
+        </div>
+
+        <audio id="audio" preload="metadata"></audio>
+
+        <div class="controls">
+          <button id="prev" class="control-btn" title="Previous"><i class="fa-solid fa-backward-step"></i></button>
+          <button id="shuffle" class="control-btn" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+          <button id="play" class="play-btn" title="Play/Pause"><i class="fa-solid fa-play"></i></button>
+          <button id="repeat" class="control-btn" title="Repeat"><i class="fa-solid fa-repeat"></i></button>
+          <button id="next" class="control-btn" title="Next"><i class="fa-solid fa-forward-step"></i></button>
+        </div>
+
+        <div class="progress-wrap">
+          <span id="currentTime">0:00</span>
+          <input id="progress" type="range" min="0" max="100" value="0" />
+          <span id="duration">0:00</span>
+        </div>
+
+        <div class="bottom-controls">
+          <div class="left-controls">
+            <button id="like" class="icon-btn" title="Like"><i class="fa-regular fa-heart"></i></button>
+            <div class="volume">
+              <i class="fa-solid fa-volume-low"></i>
+              <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" />
+            </div>
+          </div>
+
+          <div class="right-controls">
+            <label class="theme-hint"></label>
+          </div>
+        </div>
+      </div>
+
+      <aside class="playlist">
+        <h3>Playlist</h3>
+        <ul id="playlist"></ul>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <small>Made with  — Music is Beautifull ❤️ Once <code></code></small>
+    </footer>
   </div>
 
   <script src="script.js"></script>
